@@ -1,0 +1,27 @@
+ORG 0000 0
+0000  3AE903     LD A, (1001)
+0003  FE00     CP 0
+0005  CA2400     JP Z, eti
+0008  47     LD B, A
+0009  3AE803     LD A, (1000)
+000C  FE00     CP 0
+000E  CA2400     JP Z, eti
+0011  B8     CP B
+0012  F21900     JP P, etu
+0015  50     LD D, B
+0016  4F     LD C, A
+0017  1802     JR eta
+0019  57  etu: LD D, A
+001A  48     LD C, B
+001B  3E00  eta: LD A, 0
+001D  82  eto: ADD D
+001E  38F9     JR C, etu
+0020  0D     DEC C
+0021  C21D00     JP NZ, eto
+0024  32EA03  eti: LD (1002), A
+0027  76     HALT
+	  	  
+	  	     |eti , 0024|
+|etu , 0019|
+|eta , 001B|
+|eto , 001D|
